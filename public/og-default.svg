@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#000000"/>
+  <g transform="translate(80,80)">
+    <path d="M0 0 L40 60 L80 0 Z" fill="none" stroke="#FFFFFF" stroke-width="5"/>
+  </g>
+  <text x="80" y="340" fill="#FFFFFF" font-family="Inter, system-ui" font-size="84" font-weight="700">Void Layer</text>
+  <text x="80" y="420" fill="#9CA3AF" font-family="Inter, system-ui" font-size="36">Engineering Digital Systems Beyond Limits</text>
+  <text x="80" y="560" fill="#FFFFFF" font-family="Inter, system-ui" font-size="28" font-weight="500">voidlayer.com</text>
+</svg>
