@@ -21,6 +21,7 @@ export function MarqueeBig({
   repeat = 2,
   className,
 }: MarqueeBigProps) {
+  
   return (
     <div className={cn("relative overflow-hidden mask-fade-x", className)}>
       <div
@@ -48,15 +49,15 @@ export function MarqueeBig({
                   >
                     <span
                       className={cn(
-                        "text-[clamp(2.25rem,7vw,6rem)] font-display font-semibold tracking-[-0.035em] text-white",
-                        italic && "italic-serif text-white/85",
+                        "text-[clamp(2.25rem,7vw,6rem)] font-display font-semibold tracking-[-0.035em] text-black",
+                        italic && "italic-serif text-black/85",
                       )}
                     >
                       {it}
                     </span>
                     <span
                       aria-hidden
-                      className="inline-block size-2 rounded-full bg-white/40"
+                      className="inline-block size-2 rounded-full bg-black/40"
                     />
                   </li>
                 );

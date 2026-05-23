@@ -92,6 +92,10 @@ const config: Config = {
           "0%": { transform: "translateX(0)" },
           "100%": { transform: "translateX(-50%)" },
         },
+        "float-slow": {
+          "0%,100%": { transform: "translate3d(0,0,0) rotate(0deg)" },
+          "50%": { transform: "translate3d(0,-14px,0) rotate(3deg)" },
+        },
         "shine": {
           "0%": { backgroundPosition: "200% center" },
           "100%": { backgroundPosition: "-200% center" },
@@ -117,6 +121,7 @@ const config: Config = {
         "fade-up": "fade-up 0.7s cubic-bezier(0.16,1,0.3,1) both",
         "float": "float 6s ease-in-out infinite",
         "marquee": "marquee 180s linear infinite",
+        "float-slow": "float-slow 8s ease-in-out infinite",
         "shine": "shine 4s linear infinite",
         "pulse-soft": "pulse-soft 3s ease-in-out infinite",
         "spin-slow": "spin-slow 24s linear infinite",

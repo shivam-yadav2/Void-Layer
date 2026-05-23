@@ -1,41 +1,37 @@
 import { Link } from "@tanstack/react-router";
-import { Github, Linkedin, Twitter } from "lucide-react";
 import { FOOTER_NAV } from "@/data/nav";
 
 export function Footer() {
   return (
-    <footer className="relative mt-32 border-t border-white/[0.06]">
-      <div className="container py-16 lg:py-20">
-        <div className="grid gap-12 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
+    <footer className="relative mt-24 overflow-hidden border-t border-white/[0.06] bg-[#111111]">
+      <div aria-hidden className="pointer-events-none absolute inset-0">
+        <FooterBackdrop />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(223,255,74,0.08),transparent_26%),linear-gradient(180deg,rgba(255,255,255,0.02),transparent_20%)]" />
+      </div>
+
+      <div className="container relative py-14 sm:py-16 lg:py-20">
+        <div className="grid gap-10 lg:grid-cols-[1.15fr_0.85fr_0.85fr_0.85fr]">
           <div>
-            <div className="flex items-center gap-2.5">
-              <svg width="28" height="28" viewBox="0 0 64 64">
-                <rect width="64" height="64" rx="14" fill="#000000" stroke="rgba(255,255,255,0.1)" />
-                <path
-                  d="M14 16 L32 48 L50 16 Z"
-                  fill="none"
-                  stroke="#FFFFFF"
-                  strokeWidth="3.5"
-                  strokeLinejoin="round"
-                />
-                <circle cx="32" cy="28" r="3" fill="#FFFFFF" />
-              </svg>
-              <span className="text-base font-semibold">Void Layer</span>
+            <div className="flex items-center gap-3">
+              <WordmarkBadge />
+              <div>
+                <p className="text-base font-semibold tracking-tight text-white">
+                  Void Layer
+                </p>
+                <p className="text-sm text-white/45">Designing systems, products and motion.</p>
+              </div>
             </div>
-            <p className="mt-4 max-w-sm text-sm text-white/55">
-              Premium IT services & software solutions. We design, engineer and
-              operate digital systems for ambitious companies.
+
+            <p className="mt-5 max-w-sm text-sm leading-6 text-white/55 text-pretty">
+              A compact studio footer with a strong bottom wordmark, built to keep
+              the page feeling finished without needing extra content.
             </p>
-            <div className="mt-6 flex items-center gap-2">
-              <SocialLink href="https://twitter.com" aria-label="Twitter">
-                <Twitter className="size-4" />
-              </SocialLink>
-              <SocialLink href="https://github.com" aria-label="GitHub">
-                <Github className="size-4" />
-              </SocialLink>
-              <SocialLink href="https://linkedin.com" aria-label="LinkedIn">
-                <Linkedin className="size-4" />
-              </SocialLink>
+
+            <div className="mt-8 flex flex-wrap gap-2">
+              <span className="chip text-[10.5px] py-0.5">SaaS</span>
+              <span className="chip text-[10.5px] py-0.5">Web</span>
+              <span className="chip text-[10.5px] py-0.5">Mobile</span>
+              <span className="chip text-[10.5px] py-0.5">AI</span>
             </div>
           </div>
 
@@ -49,7 +45,7 @@ export function Footer() {
                   <li key={item.to}>
                     <Link
                       to={item.to}
-                      className="text-sm text-white/70 hover:text-white transition-colors"
+                      className="text-sm text-white/70 transition-colors hover:text-white"
                     >
                       {item.label}
                     </Link>
@@ -60,35 +56,72 @@ export function Footer() {
           ))}
         </div>
 
-        <div className="mt-14 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-t border-white/[0.06] pt-8 text-xs text-white/40">
-          <p>© {new Date().getFullYear()} Void Layer. All rights reserved.</p>
-          <p className="font-mono">
-            Engineered with intent · v0.1
+        <div className="relative mt-14 border-t border-white/[0.06] pt-8">
+          <p className="font-mono text-xs uppercase tracking-[0.35em] text-white/35">
+            VOIDLayer
           </p>
+          <div className="mt-3 overflow-hidden">
+            <h2 className="font-display text-[clamp(4rem,14vw,11rem)] font-semibold leading-none tracking-[-0.08em] text-white text-balance">
+              VOIDLayer
+            </h2>
+          </div>
+
+          <div className="mt-6 flex flex-col gap-2 text-xs text-white/40 sm:flex-row sm:items-center sm:justify-between">
+            <p>© {new Date().getFullYear()} Void Layer. All rights reserved.</p>
+            <p className="font-mono">Built with intent and a little glow.</p>
+          </div>
         </div>
       </div>
     </footer>
   );
 }
 
-function SocialLink({
-  href,
-  children,
-  ...rest
-}: {
-  href: string;
-  children: React.ReactNode;
-  "aria-label": string;
-}) {
+function WordmarkBadge() {
   return (
-    <a
-      href={href}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="inline-flex size-9 items-center justify-center rounded-full border border-white/10 bg-white/[0.04] text-white/70 hover:text-white hover:border-white/20 transition-colors"
-      {...rest}
-    >
-      {children}
-    </a>
+    <div className="relative flex size-12 items-center justify-center rounded-[1.1rem] border border-white/12 bg-white/[0.04] shadow-[0_12px_30px_-18px_rgba(0,0,0,0.8)]">
+      <span className="absolute inset-0 rounded-[1.1rem] bg-[radial-gradient(circle_at_30%_28%,rgba(223,255,74,0.4),transparent_42%),radial-gradient(circle_at_70%_72%,rgba(185,150,255,0.25),transparent_38%)]" />
+      <span className="relative text-sm font-semibold tracking-tight text-white">V</span>
+    </div>
+  );
+}
+
+function FooterBackdrop() {
+  return (
+    <svg viewBox="0 0 1440 520" className="absolute inset-x-0 bottom-0 h-full w-full" preserveAspectRatio="none" aria-hidden>
+      <defs>
+        <linearGradient id="footer-wave" x1="0" x2="1" y1="0" y2="1">
+          <stop offset="0%" stopColor="#141414" />
+          <stop offset="35%" stopColor="#0E0E0E" />
+          <stop offset="100%" stopColor="#090909" />
+        </linearGradient>
+        <linearGradient id="footer-glow" x1="0" x2="1" y1="0" y2="0">
+          <stop offset="0%" stopColor="rgba(223,255,74,0.0)" />
+          <stop offset="50%" stopColor="rgba(223,255,74,0.18)" />
+          <stop offset="100%" stopColor="rgba(185,150,255,0.0)" />
+        </linearGradient>
+        <filter id="footer-soft" x="-20%" y="-20%" width="140%" height="140%">
+          <feGaussianBlur stdDeviation="12" />
+        </filter>
+      </defs>
+      <rect width="1440" height="520" fill="url(#footer-wave)" />
+      <path
+        d="M0 330 C 160 260 250 230 390 280 C 510 322 650 420 790 396 C 940 370 1000 250 1130 246 C 1270 242 1360 300 1440 278 L 1440 520 L 0 520 Z"
+        fill="#1A1A1A"
+        opacity="0.92"
+      />
+      <path
+        d="M0 360 C 180 300 270 280 430 330 C 590 380 680 450 830 420 C 960 394 1040 300 1180 286 C 1290 274 1365 320 1440 344"
+        fill="none"
+        stroke="rgba(255,255,255,0.08)"
+        strokeWidth="2"
+        filter="url(#footer-soft)"
+      />
+      <path
+        d="M0 392 C 160 350 320 370 460 418 C 610 470 740 480 870 440 C 1010 398 1110 332 1240 330 C 1335 328 1395 350 1440 362"
+        fill="none"
+        stroke="url(#footer-glow)"
+        strokeWidth="3"
+      />
+    </svg>
   );
 }
