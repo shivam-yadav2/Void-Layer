@@ -44,11 +44,11 @@ const productsRoute = createRoute({
   component: ProductsPage,
 });
 
-const careersRoute = createRoute({
-  getParentRoute: () => rootRoute,
-  path: "/careers",
-  component: CareersPage,
-});
+// const careersRoute = createRoute({
+//   getParentRoute: () => rootRoute,
+//   path: "/careers",
+//   component: CareersPage,
+// });
 
 const contactRoute = createRoute({
   getParentRoute: () => rootRoute,
@@ -79,7 +79,7 @@ const routeTree = rootRoute.addChildren([
   aboutRoute,
   servicesRoute,
   productsRoute,
-  careersRoute,
+  // careersRoute,
   contactRoute,
   privacyRoute,
   termsRoute,

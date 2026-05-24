@@ -193,165 +193,175 @@ export function ProductShowcase() {
           </motion.div>
         </motion.div>
 
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={stagger(0.06)}
-          className="mt-14 grid grid-cols-1 gap-5 lg:grid-cols-12 lg:gap-6"
-        >
-          {PANELS.map((panel) => {
-            const product = PRODUCTS[panel.productIndex];
-            const tone = TONE_CLASSES[panel.tone];
-            const featured = panel.featured ?? false;
-
-            return (
-              <motion.div key={panel.number} variants={fadeUp} className={panel.span}>
-                <article
-                  className={cn(
-                    "group relative flex h-full flex-col overflow-hidden rounded-[2rem] p-3 transition-transform duration-300 hover:-translate-y-1",
-                    tone.card,
-                  )}
-                >
-                  <div className="flex items-start justify-between gap-3 px-2 pt-2">
-                    <div>
-                      <p
-                        className={cn(
-                          "font-mono text-[10px] uppercase tracking-[0.34em]",
-                          featured ? "text-black/65" : tone.text,
-                        )}
-                      >
-                        {panel.eyebrow}
-                      </p>
-                      <h3
-                        className={cn(
-                          "mt-2 text-2xl font-semibold tracking-tight sm:text-3xl",
-                          featured ? "text-black" : "text-current",
-                        )}
-                      >
-                        {product.name}
-                      </h3>
-                      <p className={cn("mt-1 text-sm", featured ? "text-black/65" : tone.text)}>
-                        {product.category}
-                      </p>
-                    </div>
-
-                    <div className="flex flex-col items-end gap-2">
-                      <span
-                        className={cn(
-                          "inline-flex rounded-full px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.28em]",
-                          tone.badge,
-                        )}
-                      >
-                        {product.status === "live" ? "Live" : "Soon"}
-                      </span>
-                      <span
-                        className={cn(
-                          "font-mono text-sm tracking-tight",
-                          featured ? "text-black/70" : "text-[#DFFF4A]",
-                        )}
-                      >
-                        /{panel.number}
-                      </span>
-                    </div>
-                  </div>
-
-                  <p className={cn("mt-5 max-w-xl text-sm sm:text-base", featured ? "text-black/75" : tone.text)}>
-                    {product.tagline}
-                  </p>
-
-                  <div
-                    className={cn(
-                      "relative mt-6 overflow-hidden rounded-[1.6rem] border p-4 sm:p-5",
-                      tone.frame,
-                    )}
-                    style={{
-                      boxShadow: featured
-                        ? "inset 0 1px 0 rgba(255,255,255,0.15), 0 24px 60px -30px rgba(0,0,0,0.5)"
-                        : "inset 0 1px 0 rgba(255,255,255,0.08), 0 20px 60px -30px rgba(0,0,0,0.65)",
-                    }}
-                  >
-                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_30%,rgba(255,255,255,0.1),transparent_42%),linear-gradient(135deg,rgba(255,255,255,0.04),transparent_65%)]" />
-                    <div className="absolute inset-0 grid-bg opacity-20" />
-
-                    <div className="relative z-10 flex items-center gap-2 border-b border-white/10 pb-3 text-[10px] uppercase tracking-[0.32em] text-white/45">
-                      <span className="flex items-center gap-1.5">
-                        <span className="size-2 rounded-full bg-white/20" />
-                        <span className="size-2 rounded-full bg-white/20" />
-                        <span className="size-2 rounded-full bg-white/20" />
-                      </span>
-                      <span className="hidden truncate sm:inline">voidlayer.com/products</span>
-                      <span className="ml-auto rounded-full border border-white/10 bg-white/[0.04] px-2 py-1 text-[9px] tracking-[0.24em] text-white/55">
-                        screenshot slot
-                      </span>
-                    </div>
-
-                    <div className="relative z-10 min-h-[15rem] overflow-hidden pt-4 sm:min-h-[17rem]">
-                      <ProductArt decor={panel.decor} />
-
-                      <div className="absolute left-4 top-4 max-w-[58%] rounded-2xl border border-white/10 bg-black/35 px-3 py-2 backdrop-blur-md sm:px-4">
-                        <p className="text-[10px] uppercase tracking-[0.28em] text-white/45">
-                          Placeholder for software image
-                        </p>
-                        <p className="mt-1 text-sm text-white/80">
-                          Drop the product page capture here later.
-                        </p>
-                      </div>
-
-                      <div className="absolute bottom-4 left-4 right-4 flex items-end justify-between gap-4">
-                        <p className="max-w-xs text-xs text-white/55 text-pretty">
-                          {panel.previewLabel}
-                        </p>
-                        <div className="flex items-center gap-2 rounded-full border border-white/10 bg-black/35 px-3 py-1.5 backdrop-blur-md">
-                          <span className="size-2 rounded-full bg-[#DFFF4A]" />
-                          <span className="text-[10px] font-medium uppercase tracking-[0.24em] text-white/70">
-                            Ready for art direction
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div
-                    className={cn(
-                      "mt-4 flex flex-wrap items-center justify-between gap-3 px-2 pb-2",
-                      featured ? "text-black" : "text-white",
-                    )}
-                  >
-                    <div className="flex flex-wrap gap-1.5">
-                      {product.features.slice(0, featured ? 4 : 3).map((feature) => (
-                        <span
-                          key={feature}
-                          className={cn(
-                            "inline-flex items-center rounded-full px-2.5 py-1 text-[10px] font-medium tracking-tight",
-                            featured
-                              ? "bg-black/10 text-black/75"
-                              : "border border-white/10 bg-white/[0.04] text-white/70",
-                          )}
-                        >
-                          {feature}
-                        </span>
-                      ))}
-                    </div>
-
-                    <Link
-                      to="/products"
-                      className={cn(
-                        "inline-flex items-center gap-1 text-xs font-semibold transition-colors",
-                        featured ? "text-black/75 hover:text-black" : "text-white/65 hover:text-white",
-                      )}
-                    >
-                      Open product
-                      <ArrowUpRight className="size-3.5" />
-                    </Link>
-                  </div>
-                </article>
-              </motion.div>
-            );
-          })}
-        </motion.div>
+        <ProductShowcaseGrid className="mt-14" />
       </div>
     </section>
+  );
+}
+
+interface ProductShowcaseGridProps {
+  className?: string;
+}
+
+export function ProductShowcaseGrid({ className }: ProductShowcaseGridProps) {
+  return (
+    <motion.div
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: "-100px" }}
+      variants={stagger(0.06)}
+      className={cn("grid grid-cols-1 gap-5 lg:grid-cols-12 lg:gap-6", className)}
+    >
+      {PANELS.map((panel) => {
+        const product = PRODUCTS[panel.productIndex];
+        const tone = TONE_CLASSES[panel.tone];
+        const featured = panel.featured ?? false;
+
+        return (
+          <motion.div key={panel.number} variants={fadeUp} className={panel.span}>
+            <article
+              className={cn(
+                "group relative flex h-full flex-col overflow-hidden rounded-[2rem] p-3 transition-transform duration-300 hover:-translate-y-1",
+                tone.card,
+              )}
+            >
+              <div className="flex items-start justify-between gap-3 px-2 pt-2">
+                <div>
+                  <p
+                    className={cn(
+                      "font-mono text-[10px] uppercase tracking-[0.34em]",
+                      featured ? "text-black/65" : tone.text,
+                    )}
+                  >
+                    {panel.eyebrow}
+                  </p>
+                  <h3
+                    className={cn(
+                      "mt-2 text-2xl font-semibold tracking-tight sm:text-3xl",
+                      featured ? "text-black" : "text-current",
+                    )}
+                  >
+                    {product.name}
+                  </h3>
+                  <p className={cn("mt-1 text-sm", featured ? "text-black/65" : tone.text)}>
+                    {product.category}
+                  </p>
+                </div>
+
+                <div className="flex flex-col items-end gap-2">
+                  <span
+                    className={cn(
+                      "inline-flex rounded-full px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.28em]",
+                      tone.badge,
+                    )}
+                  >
+                    {product.status === "live" ? "Live" : "Soon"}
+                  </span>
+                  <span
+                    className={cn(
+                      "font-mono text-sm tracking-tight",
+                      featured ? "text-black/70" : "text-[#DFFF4A]",
+                    )}
+                  >
+                    /{panel.number}
+                  </span>
+                </div>
+              </div>
+
+              <p className={cn("mt-5 max-w-xl text-sm sm:text-base", featured ? "text-black/75" : tone.text)}>
+                {product.tagline}
+              </p>
+
+              <div
+                className={cn(
+                  "relative mt-6 overflow-hidden rounded-[1.6rem] border p-4 sm:p-5",
+                  tone.frame,
+                )}
+                style={{
+                  boxShadow: featured
+                    ? "inset 0 1px 0 rgba(255,255,255,0.15), 0 24px 60px -30px rgba(0,0,0,0.5)"
+                    : "inset 0 1px 0 rgba(255,255,255,0.08), 0 20px 60px -30px rgba(0,0,0,0.65)",
+                }}
+              >
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_30%,rgba(255,255,255,0.1),transparent_42%),linear-gradient(135deg,rgba(255,255,255,0.04),transparent_65%)]" />
+                <div className="absolute inset-0 grid-bg opacity-20" />
+
+                <div className="relative z-10 flex items-center gap-2 border-b border-white/10 pb-3 text-[10px] uppercase tracking-[0.32em] text-white/45">
+                  <span className="flex items-center gap-1.5">
+                    <span className="size-2 rounded-full bg-white/20" />
+                    <span className="size-2 rounded-full bg-white/20" />
+                    <span className="size-2 rounded-full bg-white/20" />
+                  </span>
+                  <span className="hidden truncate sm:inline">voidlayer.com/products</span>
+                  <span className="ml-auto rounded-full border border-white/10 bg-white/[0.04] px-2 py-1 text-[9px] tracking-[0.24em] text-white/55">
+                    screenshot slot
+                  </span>
+                </div>
+
+                <div className="relative z-10 min-h-[15rem] overflow-hidden pt-4 sm:min-h-[17rem]">
+                  <ProductArt decor={panel.decor} />
+
+                  <div className="absolute left-4 top-4 max-w-[58%] rounded-2xl border border-white/10 bg-black/35 px-3 py-2 backdrop-blur-md sm:px-4">
+                    <p className="text-[10px] uppercase tracking-[0.28em] text-white/45">
+                      Placeholder for software image
+                    </p>
+                    <p className="mt-1 text-sm text-white/80">
+                      Drop the product page capture here later.
+                    </p>
+                  </div>
+
+                  <div className="absolute bottom-4 left-4 right-4 flex items-end justify-between gap-4">
+                    <p className="max-w-xs text-xs text-white/55 text-pretty">
+                      {panel.previewLabel}
+                    </p>
+                    <div className="flex items-center gap-2 rounded-full border border-white/10 bg-black/35 px-3 py-1.5 backdrop-blur-md">
+                      <span className="size-2 rounded-full bg-[#DFFF4A]" />
+                      <span className="text-[10px] font-medium uppercase tracking-[0.24em] text-white/70">
+                        Ready for art direction
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div
+                className={cn(
+                  "mt-4 flex flex-wrap items-center justify-between gap-3 px-2 pb-2",
+                  featured ? "text-black" : "text-white",
+                )}
+              >
+                <div className="flex flex-wrap gap-1.5">
+                  {product.features.slice(0, featured ? 4 : 3).map((feature) => (
+                    <span
+                      key={feature}
+                      className={cn(
+                        "inline-flex items-center rounded-full px-2.5 py-1 text-[10px] font-medium tracking-tight",
+                        featured
+                          ? "bg-black/10 text-black/75"
+                          : "border border-white/10 bg-white/[0.04] text-white/70",
+                      )}
+                    >
+                      {feature}
+                    </span>
+                  ))}
+                </div>
+
+                <Link
+                  to="/products"
+                  className={cn(
+                    "inline-flex items-center gap-1 text-xs font-semibold transition-colors",
+                    featured ? "text-black/75 hover:text-black" : "text-white/65 hover:text-white",
+                  )}
+                >
+                  Open product
+                  <ArrowUpRight className="size-3.5" />
+                </Link>
+              </div>
+            </article>
+          </motion.div>
+        );
+      })}
+    </motion.div>
   );
 }
 

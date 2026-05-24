@@ -13,7 +13,7 @@ export function Footer() {
         <div className="grid gap-10 lg:grid-cols-[1.15fr_0.85fr_0.85fr_0.85fr]">
           <div>
             <div className="flex items-center gap-3">
-              <WordmarkBadge />
+
               <div>
                 <p className="text-base font-semibold tracking-tight text-white">
                   Void Layer
@@ -27,12 +27,7 @@ export function Footer() {
               the page feeling finished without needing extra content.
             </p>
 
-            <div className="mt-8 flex flex-wrap gap-2">
-              <span className="chip text-[10.5px] py-0.5">SaaS</span>
-              <span className="chip text-[10.5px] py-0.5">Web</span>
-              <span className="chip text-[10.5px] py-0.5">Mobile</span>
-              <span className="chip text-[10.5px] py-0.5">AI</span>
-            </div>
+            
           </div>
 
           {Object.entries(FOOTER_NAV).map(([heading, items]) => (
@@ -57,13 +52,13 @@ export function Footer() {
         </div>
 
         <div className="relative mt-14 border-t border-white/[0.06] pt-8">
-          <p className="font-mono text-xs uppercase tracking-[0.35em] text-white/35">
-            VOIDLayer
-          </p>
           <div className="mt-3 overflow-hidden">
             <h2 className="font-display text-[clamp(4rem,14vw,11rem)] font-semibold leading-none tracking-[-0.08em] text-white text-balance">
               VOIDLayer
             </h2>
+             <p className="font-mono text-xs uppercase tracking-[0.35em] text-white/35">
+            FROM VOID TO VISION.
+          </p>
           </div>
 
           <div className="mt-6 flex flex-col gap-2 text-xs text-white/40 sm:flex-row sm:items-center sm:justify-between">

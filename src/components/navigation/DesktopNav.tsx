@@ -31,7 +31,7 @@ export function DesktopNav() {
           )}
         >
           <Link to="/" className="flex items-center gap-2.5 group">
-            <Logo />
+           
             <span className="text-[15px] font-semibold tracking-tight">
               Void<span className="text-white/60"> Layer</span>
             </span>
@@ -77,18 +77,4 @@ export function DesktopNav() {
   );
 }
 
-function Logo() {
-  return (
-    <svg width="28" height="28" viewBox="0 0 64 64" className="shrink-0">
-      <rect width="64" height="64" rx="14" fill="#000000" stroke="rgba(255,255,255,0.1)" />
-      <path
-        d="M14 16 L32 48 L50 16 Z"
-        fill="none"
-        stroke="#FFFFFF"
-        strokeWidth="3.5"
-        strokeLinejoin="round"
-      />
-      <circle cx="32" cy="28" r="3" fill="#FFFFFF" />
-    </svg>
-  );
-}
+

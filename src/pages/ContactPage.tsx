@@ -1,14 +1,17 @@
-import { useState, type FormEvent } from "react";
+import { useRef, useState, type FormEvent } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Mail, MapPin, Send, Check } from "lucide-react";
 import { SEO } from "@/components/SEO";
 import { PageHeader } from "@/components/PageHeader";
+import { Marquee } from "@/components/ui/Marquee";
+import VariableProximity from "@/components/ui/VariableProximity";
 
 const BUDGETS = ["< $25k", "$25k – $75k", "$75k – $200k", "$200k+"] as const;
 
 export function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
-
+  const [isEmailHovered, setIsEmailHovered] = useState(false);
+const emailRef = useRef<HTMLAnchorElement | null>(null);
   const onSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setSubmitted(true);
@@ -28,15 +31,56 @@ export function ContactPage() {
         subtitle="We respond to every inbound within one business day."
       />
 
+      <section>
+        <div className="container">
+          <Marquee speed={20} className="py-6">
+            <span className="text-2xl sm:text-3xl font-semibold uppercase tracking-[0.3em] text-white/70">
+              Contact
+            </span>
+            <span className="text-white/30">✦</span>
+            <span className="text-2xl sm:text-3xl font-semibold uppercase tracking-[0.3em] text-white/70">
+              Inquiry
+            </span>
+            <span className="text-white/30">✦</span>
+            <span className="text-2xl sm:text-3xl font-semibold uppercase tracking-[0.3em] text-white/70">
+              Say hello
+            </span>
+            <span className="text-white/30">✦</span>
+            <span className="text-2xl sm:text-3xl font-semibold uppercase tracking-[0.3em] text-white/70">
+              Let's talk
+            </span>
+            <span className="text-white/30">✦</span>
+          </Marquee>
+        </div>
+      </section>
+
       <section className="section-tight">
         <div className="container">
           <div className="grid gap-10 lg:grid-cols-[1fr_1.4fr]">
             <div className="space-y-6">
-              <ContactCard
-                icon={<Mail className="size-5" />}
-                title="Email"
-                lines={["hello@voidlayer.com", "careers@voidlayer.com"]}
-              />
+             <h1 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
+  Let's talk. <br />
+  <a
+    href="mailto:hello@voidlayer.in"
+    ref={emailRef as React.RefObject<HTMLAnchorElement>}
+    className="inline-flex cursor-pointer text-[80px] leading-[1.05]"
+    onMouseEnter={() => setIsEmailHovered(true)}
+    onMouseLeave={() => setIsEmailHovered(false)}
+  >
+    <div >
+      <VariableProximity
+        label="hello@voidlayer.in"
+        className="leading-none transition-colors cursor-pointer"
+        fromFontVariationSettings="'wght' 400, 'opsz' 12"
+        toFontVariationSettings="'wght' 900, 'opsz' 36"
+        containerRef={emailRef}
+        style={{ color: "#c6f24e" }}
+        radius={90}
+        falloff="gaussian"
+      />
+    </div>
+  </a>
+</h1>
               <ContactCard
                 icon={<MapPin className="size-5" />}
                 title="Studio"
@@ -149,7 +193,6 @@ export function ContactPage() {
 
                     <button type="submit" className="btn-primary w-full">
                       Send message
-                      <Send className="size-4" />
                     </button>
                     <p className="text-center text-[11px] text-white/40">
                       We'll never share your details. By submitting you agree to our{" "}

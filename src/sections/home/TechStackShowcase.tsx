@@ -69,7 +69,6 @@ export function TechStackShowcase() {
           title="A vibrant dome of the stack we ship with."
           subtitle="The gallery now uses the React Bits DomeGallery component and real brand-mark tiles generated from our stack."
         />
-
         <motion.div
           variants={stagger(0.02)}
           initial="hidden"

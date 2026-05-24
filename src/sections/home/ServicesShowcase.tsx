@@ -196,7 +196,7 @@ function HeroPanel({ services }: { services: (typeof SERVICES)[number][] }) {
   );
 }
 
-function LargeServiceCard({
+export function LargeServiceCard({
   service,
   mode,
 }: {
@@ -273,7 +273,7 @@ function LargeServiceCard({
   );
 }
 
-function MiniServiceCard({
+export function MiniServiceCard({
   service,
   tone,
   compact = false,

@@ -1,51 +1,86 @@
-import { motion } from "framer-motion";
+import { useEffect, useRef } from "react";
 import { SEO } from "@/components/SEO";
 import { PageHeader } from "@/components/PageHeader";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { Marquee } from "@/components/ui/Marquee";
 import { Stats } from "@/sections/home/Stats";
 import { CTAFooter } from "@/sections/home/CTAFooter";
-import { fadeUp, stagger } from "@/animations/variants";
-import { PRINCIPLES } from "@/data/jobs";
+import { registerGSAP, gsap } from "@/animations/gsap";
+import {
+  ChromeSphere,
+  CyanCrystal,
+  Donut,
+  Flame,
+  GeoCluster,
+  PurpleBlob,
+} from "@/components/ui/Shapes3D";
 
-const STORY = [
-  {
-    year: "2023",
-    title: "A studio is born",
-    body: "Void Layer started as a small group of senior engineers and designers tired of agency-grade software. We rebuilt how an engagement should feel.",
-  },
-  {
-    year: "2024",
-    title: "First SaaS shipped",
-    body: "Nebula went live, followed by Orbit. We learned the discipline of running products and brought that mindset into client work.",
-  },
-  {
-    year: "2025",
-    title: "AI-native engineering",
-    body: "We embedded LLMs, RAG and agents into our product practice — not as demos, but as real production features with evals and HITL.",
-  },
-  {
-    year: "Today",
-    title: "Studio + Lab",
-    body: "We operate as a studio for clients and a lab for our own SaaS — each side sharpening the other.",
-  },
-];
 
-const PILLARS = [
+const PRINCIPLE_CARDS = [
   {
-    title: "Mission",
-    body: "Help ambitious teams ship software that feels inevitable — fast, premium, durable.",
+    title: "Architecture-first",
+    body: "We design the system before the screens so the product can scale without rewrites.",
+    tone: "bg-[#DFFF4A] text-black",
+    badge: "bg-black text-[#DFFF4A]",
+    decor: "lime",
   },
   {
-    title: "Vision",
-    body: "A world where every team has access to studio-grade engineering, not just FAANG.",
+    title: "Motion as language",
+    body: "Every interaction tells a story — motion, copy and UI are designed as one.",
+    tone: "bg-[#BEA7FF] text-black",
+    badge: "bg-black text-[#BEA7FF]",
+    decor: "violet",
   },
   {
-    title: "Philosophy",
-    body: "Architecture-first. Motion as language. Boring infra. Public progress.",
+    title: "Boring infra",
+    body: "We pick battle-tested tools so your team ships every week without anxiety.",
+    tone: "bg-[#FFB0D3] text-black",
+    badge: "bg-black text-[#FFB0D3]",
+    decor: "pink",
+  },
+  {
+    title: "Senior pods",
+    body: "No layers, no handoffs. You work with senior operators from day one.",
+    tone: "bg-[#88F5FF] text-black",
+    badge: "bg-black text-[#88F5FF]",
+    decor: "cyan",
+  },
+  {
+    title: "Public progress",
+    body: "Weekly shipping, visible momentum, measurable outcomes and documented decisions.",
+    tone: "bg-[#FFC46B] text-black",
+    badge: "bg-black text-[#FFC46B]",
+    decor: "amber",
   },
 ];
 
 export function AboutPage() {
+  const marqueeRef = useRef<HTMLDivElement>(null);
+  const trackRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const track = trackRef.current;
+    const container = marqueeRef.current;
+    if (!track || !container) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    registerGSAP();
+
+    const ctx = gsap.context(() => {
+      const totalWidth = track.scrollWidth / 2;
+      const duration = Math.max(totalWidth / 80, 18);
+      gsap.set(track, { x: 0 });
+      gsap.to(track, {
+        x: -totalWidth,
+        duration,
+        ease: "none",
+        repeat: -1,
+      });
+    }, container);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
     <>
       <SEO
@@ -57,91 +92,98 @@ export function AboutPage() {
       <PageHeader
         eyebrow="About us"
         title="A studio of engineers who design like designers."
-        subtitle="We're a small, senior team building premium software systems — half studio, half product lab."
+        
       />
+
+      <section>
+        <div className="container">
+          <Marquee speed={20} className="py-6">
+            <span className="text-2xl sm:text-3xl font-semibold uppercase tracking-[0.3em] text-white/70">
+              Studio
+            </span>
+            <span className="text-white/30">✦</span>
+            <span className="text-2xl sm:text-3xl font-semibold uppercase tracking-[0.3em] text-white/70">
+              Product Lab
+            </span>
+            <span className="text-white/30">✦</span>
+            <span className="text-2xl sm:text-3xl font-semibold uppercase tracking-[0.3em] text-white/70">
+              Engineering
+            </span>
+            <span className="text-white/30">✦</span>
+            <span className="text-2xl sm:text-3xl font-semibold uppercase tracking-[0.3em] text-white/70">
+              Motion
+            </span>
+            <span className="text-white/30">✦</span>
+            <span className="text-2xl sm:text-3xl font-semibold uppercase tracking-[0.3em] text-white/70">
+              Design Systems
+            </span>
+            <span className="text-white/30">✦</span>
+            <span className="text-2xl sm:text-3xl font-semibold uppercase tracking-[0.3em] text-white/70">
+              Product Strategy
+            </span>
+            <span className="text-white/30">✦</span>
+          </Marquee>
+        </div>
+      </section>
+
 
       <section className="section-tight">
         <div className="container">
-          <motion.div
-            variants={stagger(0.08)}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-80px" }}
-            className="grid gap-5 md:grid-cols-3"
-          >
-            {PILLARS.map((p) => (
-              <motion.div
-                variants={fadeUp}
-                key={p.title}
-                className="rounded-2xl border border-white/[0.08] bg-white/[0.02] p-8"
-              >
-                <h3 className="text-base font-semibold text-white/95">{p.title}</h3>
-                <p className="mt-3 text-sm text-white/55 text-pretty">{p.body}</p>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
+          <SectionHeading eyebrow="Pillars" title="Studio principles, applied daily." />
+          <div ref={marqueeRef} className="relative mt-10 overflow-hidden mask-fade-x">
+            <div ref={trackRef} className="flex w-max gap-6 pr-6">
+              {[0, 1].map((set) => (
+                <div key={set} className="flex gap-6">
+                  {PRINCIPLE_CARDS.map((card, index) => (
+                    <article
+                      key={`${card.title}-${set}`}
+                      className={` w-[320px] sm:w-[380px] shrink-0 overflow-hidden rounded-[1rem] border border-black/10 p-6 shadow-[0_26px_60px_-40px_rgba(0,0,0,0.7)] ${card.tone}`}
+                    >
+                      <h3 className="mt-5 text-2xl font-semibold tracking-tight">{card.title}</h3>
+                      <p className="mt-3 text-sm text-black/70 text-pretty">{card.body}</p>
 
-      <section className="section">
-        <div className="container">
-          <SectionHeading
-            eyebrow="Our story"
-            title="From small idea to operating studio."
-            align="left"
-          />
-
-          <motion.ol
-            variants={stagger(0.1)}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-80px" }}
-            className="relative mt-14 space-y-8 border-l border-white/[0.08] pl-8"
-          >
-            {STORY.map((s) => (
-              <motion.li variants={fadeUp} key={s.year} className="relative">
-                <span className="absolute -left-[34px] top-1.5 size-3 rounded-full bg-white ring-4 ring-black" />
-                <div className="font-mono text-xs tracking-[0.2em] text-white/45">
-                  {s.year}
+                      <PrincipleDecor kind={card.decor} />
+                    </article>
+                  ))}
                 </div>
-                <h3 className="mt-1 text-xl font-semibold">{s.title}</h3>
-                <p className="mt-2 max-w-2xl text-white/60 text-pretty">{s.body}</p>
-              </motion.li>
-            ))}
-          </motion.ol>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
+
 
       <Stats />
 
-      <section className="section">
-        <div className="container">
-          <SectionHeading
-            eyebrow="Principles"
-            title="The rules we run by."
-          />
-          <motion.div
-            variants={stagger(0.06)}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-80px" }}
-            className="mt-14 grid gap-4 sm:grid-cols-2"
-          >
-            {PRINCIPLES.map((p) => (
-              <motion.div
-                variants={fadeUp}
-                key={p.title}
-                className="rounded-2xl border border-white/[0.08] bg-white/[0.02] p-7"
-              >
-                <h3 className="text-lg font-semibold">{p.title}</h3>
-                <p className="mt-2 text-sm text-white/55">{p.body}</p>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
 
       <CTAFooter />
     </>
   );
+}
+
+function PrincipleDecor({ kind }: { kind: (typeof PRINCIPLE_CARDS)[number]["decor"] }) {
+  switch (kind) {
+    case "lime":
+      return (
+        <Donut className="absolute -right-6 -top-8 h-28 w-28 opacity-90" />
+      );
+    case "violet":
+      return (
+        <PurpleBlob className="absolute -right-8 -top-10 h-32 w-32 opacity-95" />
+      );
+    case "pink":
+      return (
+        <Flame className="absolute -right-6 -top-10 h-28 w-28 opacity-95" />
+      );
+    case "cyan":
+      return (
+        <CyanCrystal className="absolute -right-6 -top-10 h-28 w-28 opacity-95" />
+      );
+    case "amber":
+      return (
+        <GeoCluster className="absolute -right-6 -top-10 h-28 w-28 opacity-90" />
+      );
+    default:
+      return <ChromeSphere className="absolute -right-6 -top-10 h-28 w-28 opacity-90" />;
+  }
 }

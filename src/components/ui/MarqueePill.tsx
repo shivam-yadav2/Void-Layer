@@ -15,7 +15,7 @@ interface MarqueePillProps {
  */
 export function MarqueePill({
   items,
-  speed = 18,
+  speed = 35,
   className,
   bg = "#C6F24E",
   fg = "#0A0A0A",

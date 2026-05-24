@@ -1,6 +1,5 @@
 import { SEO } from "@/components/SEO";
 import { Hero } from "@/sections/home/Hero";
-import { TrustedTech } from "@/sections/home/TrustedTech";
 import { VelocityText } from "@/sections/home/VelocityText";
 import { HorizontalShowcase } from "@/sections/home/HorizontalShowcase";
 import { Statement } from "@/sections/home/Statement";
@@ -25,7 +24,6 @@ export function HomePage() {
       <VelocityText />
       {/* <ResponsiveShowcase /> */}
       <ServicesShowcase />
-      <TrustedTech />
       {/* <HorizontalShowc÷ase /> */}
       {/* <Statement /> */}
       {/* <FeaturedProducts /> */}

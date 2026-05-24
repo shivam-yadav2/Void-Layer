@@ -1,11 +1,15 @@
 import { motion } from "framer-motion";
+import { useRef } from "react";
 import { Link } from "@tanstack/react-router";
 import { ArrowUpRight, Plug, Sparkles, Zap } from "lucide-react";
 import { SEO } from "@/components/SEO";
 import { PageHeader } from "@/components/PageHeader";
 import { FeaturedProducts } from "@/sections/home/FeaturedProducts";
 import { CTAFooter } from "@/sections/home/CTAFooter";
+import { ProductShowcaseGrid } from "@/sections/home/ProductShowcase";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { Marquee } from "@/components/ui/Marquee";
+import VariableProximity from "@/components/ui/VariableProximity";
 import { fadeUp, stagger } from "@/animations/variants";
 
 const INTEGRATIONS = [
@@ -41,6 +45,28 @@ const ARCH_PILLARS = [
   },
 ];
 
+function IntegrationPill({ label }: { label: string }) {
+  const containerRef = useRef<HTMLDivElement | null>(null);
+
+  return (
+    <div
+      ref={containerRef}
+      className="group rounded-xl border border-white/[0.08] bg-white/[0.02] py-6 text-center text-xl  text-white/70 transition-colors hover:border-white/15"
+      style={{ position: "relative" }}
+    >
+      <VariableProximity
+        label={label}
+        className="uppercase tracking-[0.3em] text-white/70 transition-colors group-hover:text-white"
+        fromFontVariationSettings="'wght' 400, 'opsz' 9"
+        toFontVariationSettings="'wght' 900, 'opsz' 36"
+        containerRef={containerRef}
+        radius={90}
+        falloff="gaussian"
+      />
+    </div>
+  );
+}
+
 export function ProductsPage() {
   return (
     <>
@@ -54,41 +80,45 @@ export function ProductsPage() {
         eyebrow="Products · On subscription"
         title="Business software you can subscribe to today."
         italicWord="subscribe"
-        subtitle="Six SaaS products for the operations that run real businesses. Gym, PM and HRMS are live now — Salon, e-commerce and marketplace are launching soon."
       />
-
-      <FeaturedProducts />
+      <section className="">
+        <div className="container">
+          <Marquee speed={140} className="py-6">
+            <span className="text-2xl sm:text-3xl font-semibold uppercase tracking-[0.3em] text-white/70">
+              Gym
+            </span>
+            <span className="text-white/30">✦</span>
+            <span className="text-2xl sm:text-3xl font-semibold uppercase tracking-[0.3em] text-white/70">
+              CRMs
+            </span>
+            <span className="text-white/30">✦</span>
+            <span className="text-2xl sm:text-3xl font-semibold uppercase tracking-[0.3em] text-white/70">
+              HRMS
+            </span>
+            <span className="text-white/30">✦</span>
+            <span className="text-2xl sm:text-3xl font-semibold uppercase tracking-[0.3em] text-white/70">
+              Salon
+            </span>
+            <span className="text-white/30">✦</span>
+            <span className="text-2xl sm:text-3xl font-semibold uppercase tracking-[0.3em] text-white/70">
+              E-Commerce
+            </span>
+            <span className="text-white/30">✦</span>
+            <span className="text-2xl sm:text-3xl font-semibold uppercase tracking-[0.3em] text-white/70">
+              Marketplace
+            </span>
+            <span className="text-white/30">✦</span>
+            <span className="text-2xl sm:text-3xl font-semibold uppercase tracking-[0.3em] text-white/70">
+              Hotel Management And More
+            </span>
+              <span className="text-white/30">✦</span>
+          </Marquee>
+        </div>
+      </section>
 
       <section className="section">
         <div className="container">
-          <SectionHeading
-            eyebrow="Architecture"
-            title="Three things every Void Layer product gets right."
-          />
-          <motion.div
-            variants={stagger(0.06)}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-80px" }}
-            className="mt-14 grid gap-4 md:grid-cols-3"
-          >
-            {ARCH_PILLARS.map((p) => {
-              const Icon = p.icon;
-              return (
-                <motion.div
-                  variants={fadeUp}
-                  key={p.title}
-                  className="rounded-2xl border border-white/[0.08] bg-white/[0.02] p-7"
-                >
-                  <span className="inline-flex size-10 items-center justify-center rounded-lg border border-white/10 bg-white/[0.04]">
-                    <Icon className="size-5 text-white" strokeWidth={1.6} />
-                  </span>
-                  <h3 className="mt-5 text-lg font-semibold">{p.title}</h3>
-                  <p className="mt-2 text-sm text-white/55 text-pretty">{p.body}</p>
-                </motion.div>
-              );
-            })}
-          </motion.div>
+          <ProductShowcaseGrid />
         </div>
       </section>
 
@@ -109,9 +139,8 @@ export function ProductsPage() {
               <motion.div
                 variants={fadeUp}
                 key={i}
-                className="rounded-xl border border-white/[0.08] bg-white/[0.02] py-6 text-center text-sm font-medium text-white/70 transition-colors hover:border-white/15 hover:text-white"
               >
-                {i}
+                <IntegrationPill label={i} />
               </motion.div>
             ))}
           </motion.div>

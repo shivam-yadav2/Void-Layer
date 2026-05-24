@@ -19,14 +19,14 @@ export const PRIMARY_NAV: NavItem[] = [
   { label: "Services", to: "/services", icon: Layers },
   { label: "Products", to: "/products", icon: Boxes },
   { label: "About", to: "/about", icon: Info },
-  { label: "Careers", to: "/careers", icon: Briefcase },
+  // { label: "Careers", to: "/careers", icon: Briefcase },
   { label: "Contact", to: "/contact", icon: Mail },
 ];
 
 export const FOOTER_NAV = {
   Company: [
     { label: "About", to: "/about" },
-    { label: "Careers", to: "/careers" },
+    // { label: "Careers", to: "/careers" },
     { label: "Contact", to: "/contact" },
   ],
   Work: [

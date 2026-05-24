@@ -24,7 +24,7 @@ export function Hero() {
       <BlobShape />
       <ChromeSphere />
 
-      <div className="container relative">
+      <div className="container mt-5 relative">
         <motion.div
           initial="hidden"
           animate="visible"
@@ -75,16 +75,7 @@ export function Hero() {
             </Link>
           </motion.div>
 
-          <motion.div
-            variants={lineVariants}
-            className="mt-12 inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/[0.03] px-4 py-2 text-xs text-white/60 backdrop-blur-md"
-          >
-            <span className="relative flex size-2">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-white opacity-50" />
-              <span className="relative inline-flex size-2 rounded-full bg-white" />
-            </span>
-            Currently shipping for 8 clients · 2 open pod slots
-          </motion.div>
+         
         </motion.div>
       </div>
     </section>
