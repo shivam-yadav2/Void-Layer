@@ -404,7 +404,7 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
   }, [closeOnClickAway, open, closeMenu]);
 
   return (
-    <div className={`sm-scope z-40 ${isFixed ? "fixed top-0 left-0 w-screen h-screen" : "w-full h-full"}`}>
+    <div className={`sm-scope z-40 pointer-events-none ${isFixed ? "fixed top-0 left-0 w-screen h-screen" : "w-full h-full"}`}>
       <div
         className={(className ? className + " " : "") + "staggered-menu-wrapper pointer-events-none relative w-full h-full z-40"}
         style={accentColor ? ({ ["--sm-accent" as any]: accentColor } as React.CSSProperties) : undefined}
