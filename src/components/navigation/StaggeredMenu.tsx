@@ -536,9 +536,13 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
                   </ul>
                 </div>
               )}
-              <div className="sm-panel-footer text-[0.85rem] text-black/60">
-                <div className="font-bold  uppercase tracking-[0.25em] text-black/70">VoidLayer</div>
-                <div className="mt-1 uppercase text-xs text-black/50">From Void To Vision</div>
+              <div className="sm-panel-footer border-t border-black/[0.9] pt-5">
+                <p className="text-[2rem] font-black leading-none tracking-tight text-black">
+                  VoidLayer
+                </p>
+                <p className="mt-2 text-[11px] font-semibold uppercase tracking-[0.28em] text-black/45">
+                  From Void To Vision
+                </p>
               </div>
             </div>
           </div>
@@ -587,8 +591,10 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
 .sm-scope .sm-panel-itemLabel { display: inline-block; will-change: transform; transform-origin: 50% 100%; }
 .sm-scope .sm-panel-list[data-numbering] { counter-reset: smItem; }
 .sm-scope .sm-panel-list[data-numbering] .sm-panel-item::after { counter-increment: smItem; content: counter(smItem, decimal-leading-zero); position: absolute; top: 0.1em; right: 3.2em; font-size: 18px; font-weight: 400; color: var(--sm-accent, #ff0000); letter-spacing: 0; pointer-events: none; user-select: none; opacity: var(--sm-num-opacity, 0); }
-@media (max-width: 1024px) { .sm-scope .staggered-menu-panel { width: 100%; left: 0; right: 0; } .sm-scope .staggered-menu-wrapper[data-open] .sm-logo-img { filter: invert(100%); } }
-@media (max-width: 640px) { .sm-scope .staggered-menu-panel { width: 100%; left: 0; right: 0; } .sm-scope .staggered-menu-wrapper[data-open] .sm-logo-img { filter: invert(100%); } }
+@media (max-width: 1024px) { .sm-scope .staggered-menu-panel { width: 100%; left: 0; right: 0; } .sm-scope .sm-prelayers { width: 100%; left: 0; right: 0; } .sm-scope .staggered-menu-wrapper[data-open] .sm-logo-img { filter: invert(100%); } }
+@media (max-width: 640px) { .sm-scope .staggered-menu-panel { width: 100%; left: 0; right: 0; } .sm-scope .sm-prelayers { width: 100%; left: 0; right: 0; } .sm-scope .staggered-menu-wrapper[data-open] .sm-logo-img { filter: invert(100%); } }
+@media (max-width: 480px) { .sm-scope .staggered-menu-header { padding: 1em 1.25em; } .sm-scope .staggered-menu-panel { padding: 4.5em 1.25em 1.5em 1.25em; } .sm-scope .sm-panel-item { font-size: 2.75rem; letter-spacing: -1px; } }
+@media (max-width: 375px) { .sm-scope .sm-panel-item { font-size: 2.25rem; letter-spacing: -0.5px; } }
       `}</style>
     </div>
   );

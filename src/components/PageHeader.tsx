@@ -13,7 +13,7 @@ interface PageHeaderProps {
 export function PageHeader({ eyebrow, title, italicWord, subtitle }: PageHeaderProps) {
   const parts = italicWord ? splitOnce(title, italicWord) : null;
   return (
-    <section className="relative isolate overflow-hidden pt-8 pb-20 lg:pt-16 lg:pb-28">
+    <section className="relative isolate overflow-hidden pt-8 pb-14 sm:pt-12 sm:pb-20 lg:pt-16 lg:pb-28">
       <AnimatedGrid />
       <Glow intensity="medium" className="-top-32 left-1/4 h-[420px] w-[420px]" />
       <Glow intensity="soft" className="top-10 -right-20 h-[360px] w-[360px]" />

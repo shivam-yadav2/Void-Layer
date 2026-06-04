@@ -310,11 +310,11 @@ export function ProductShowcaseGrid({ className }: ProductShowcaseGridProps) {
                     </p>
                   </div>
 
-                  <div className="absolute bottom-4 left-4 right-4 flex items-end justify-between gap-4">
+                  <div className="absolute bottom-4 left-4 right-4 flex flex-wrap items-end justify-between gap-2">
                     <p className="max-w-xs text-xs text-white/55 text-pretty">
                       {panel.previewLabel}
                     </p>
-                    <div className="flex items-center gap-2 rounded-full border border-white/10 bg-black/35 px-3 py-1.5 backdrop-blur-md">
+                    <div className="hidden sm:flex items-center gap-2 rounded-full border border-white/10 bg-black/35 px-3 py-1.5 backdrop-blur-md">
                       <span className="size-2 rounded-full bg-[#DFFF4A]" />
                       <span className="text-[10px] font-medium uppercase tracking-[0.24em] text-white/70">
                         Ready for art direction

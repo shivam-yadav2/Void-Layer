@@ -137,7 +137,7 @@ export function AboutPage() {
                   {PRINCIPLE_CARDS.map((card, index) => (
                     <article
                       key={`${card.title}-${set}`}
-                      className={` w-[320px] sm:w-[380px] shrink-0 overflow-hidden rounded-[1rem] border border-black/10 p-6 shadow-[0_26px_60px_-40px_rgba(0,0,0,0.7)] ${card.tone}`}
+                      className={`relative w-[280px] sm:w-[340px] lg:w-[380px] shrink-0 overflow-hidden rounded-[1rem] border border-black/10 p-6 shadow-[0_26px_60px_-40px_rgba(0,0,0,0.7)] ${card.tone}`}
                     >
                       <h3 className="mt-5 text-2xl font-semibold tracking-tight">{card.title}</h3>
                       <p className="mt-3 text-sm text-black/70 text-pretty">{card.body}</p>

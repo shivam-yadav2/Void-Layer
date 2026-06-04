@@ -63,7 +63,7 @@ const emailRef = useRef<HTMLAnchorElement | null>(null);
   <a
     href="mailto:hello@voidlayer.in"
     ref={emailRef as React.RefObject<HTMLAnchorElement>}
-    className="inline-flex cursor-pointer text-[80px] leading-[1.05]"
+    className="inline-flex cursor-pointer text-[clamp(1.5rem,5.5vw,5rem)] leading-[1.05]"
     onMouseEnter={() => setIsEmailHovered(true)}
     onMouseLeave={() => setIsEmailHovered(false)}
   >

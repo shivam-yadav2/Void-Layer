@@ -51,12 +51,12 @@ function IntegrationPill({ label }: { label: string }) {
   return (
     <div
       ref={containerRef}
-      className="group rounded-xl border border-white/[0.08] bg-white/[0.02] py-6 text-center text-xl  text-white/70 transition-colors hover:border-white/15"
+      className="group rounded-xl border border-white/[0.08] bg-white/[0.02] py-4 sm:py-6 text-center text-[11px] sm:text-sm lg:text-xl text-white/70 transition-colors hover:border-white/15"
       style={{ position: "relative" }}
     >
       <VariableProximity
         label={label}
-        className="uppercase tracking-[0.3em] text-white/70 transition-colors group-hover:text-white"
+        className="uppercase tracking-wide sm:tracking-[0.2em] lg:tracking-[0.3em] text-white/70 transition-colors group-hover:text-white"
         fromFontVariationSettings="'wght' 400, 'opsz' 9"
         toFontVariationSettings="'wght' 900, 'opsz' 36"
         containerRef={containerRef}

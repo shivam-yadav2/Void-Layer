@@ -128,7 +128,7 @@ function HeroPanel({ services }: { services: (typeof SERVICES)[number][] }) {
           </span>
         </div>
 
-        <div className="grid gap-4 sm:grid-cols-[1.2fr_0.8fr]">
+        <div className="grid gap-4 md:grid-cols-[1.2fr_0.8fr]">
           <div className="relative overflow-hidden rounded-[1.5rem] border border-white/10 bg-white/[0.03] p-4">
             <p className="text-lg font-semibold text-white sm:text-xl">Dynamic &amp; stylish design</p>
             <p className="mt-2 max-w-sm text-sm leading-6 text-white/55">

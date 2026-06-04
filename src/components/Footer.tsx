@@ -9,74 +9,66 @@ export function Footer() {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(223,255,74,0.08),transparent_26%),linear-gradient(180deg,rgba(255,255,255,0.02),transparent_20%)]" />
       </div>
 
-      <div className="container relative py-14 sm:py-16 lg:py-20">
+      <div className="container relative py-12 sm:py-16 lg:py-20">
+        {/* Main grid: brand full-width on mobile, 4-col on lg */}
         <div className="grid gap-10 lg:grid-cols-[1.15fr_0.85fr_0.85fr_0.85fr]">
-          <div>
-            <div className="flex items-center gap-3">
 
-              <div>
-                <p className="text-base font-semibold tracking-tight text-white">
-                  Void Layer
-                </p>
-                <p className="text-sm text-white/45">Designing systems, products and motion.</p>
-              </div>
-            </div>
-
-            <p className="mt-5 max-w-sm text-sm leading-6 text-white/55 text-pretty">
+          {/* Brand column */}
+          <div className="sm:max-w-xs">
+            <p className="text-base font-semibold tracking-tight text-white">
+              Void Layer
+            </p>
+            <p className="mt-0.5 text-sm text-white/45">
+              Designing systems, products and motion.
+            </p>
+            <p className="mt-4 text-sm leading-6 text-white/55 text-pretty">
               A compact studio footer with a strong bottom wordmark, built to keep
               the page feeling finished without needing extra content.
             </p>
-
-            
           </div>
 
-          {Object.entries(FOOTER_NAV).map(([heading, items]) => (
-            <div key={heading}>
-              <h4 className="text-xs font-semibold uppercase tracking-[0.18em] text-white/40">
-                {heading}
-              </h4>
-              <ul className="mt-4 space-y-3">
-                {items.map((item) => (
-                  <li key={item.to}>
-                    <Link
-                      to={item.to}
-                      className="text-sm text-white/70 transition-colors hover:text-white"
-                    >
-                      {item.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
+          {/* Nav groups: 3 equal columns on mobile/tablet, each its own lg-grid column */}
+          <div className="grid grid-cols-3 gap-x-4 gap-y-8 sm:gap-x-8 lg:contents">
+            {Object.entries(FOOTER_NAV).map(([heading, items]) => (
+              <div key={heading}>
+                <h4 className="text-[10px] sm:text-xs font-semibold uppercase tracking-[0.18em] text-white/40">
+                  {heading}
+                </h4>
+                <ul className="mt-3 sm:mt-4 space-y-2 sm:space-y-3">
+                  {items.map((item) => (
+                    <li key={item.to}>
+                      <Link
+                        to={item.to}
+                        className="text-xs sm:text-sm text-white/70 transition-colors hover:text-white"
+                      >
+                        {item.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
         </div>
 
-        <div className="relative mt-14 border-t border-white/[0.06] pt-8">
-          <div className="mt-3 overflow-hidden">
-            <h2 className="font-display text-[clamp(4rem,14vw,11rem)] font-semibold leading-none tracking-[-0.08em] text-white text-balance">
-              VOIDLayer
+        {/* Bottom strip */}
+        <div className="relative mt-10 sm:mt-14 border-t border-white/[0.06] pt-6 sm:pt-8">
+          <div className="overflow-hidden">
+            <h2 className="font-display text-[clamp(2rem,10vw,11rem)] font-semibold leading-none tracking-[-0.08em] text-white">
+              VoidLayer
             </h2>
-             <p className="font-mono text-xs uppercase tracking-[0.35em] text-white/35">
-            FROM VOID TO VISION.
-          </p>
+            <p className="mt-1 font-mono text-xs uppercase tracking-[0.35em] text-white/35">
+              FROM VOID TO VISION.
+            </p>
           </div>
 
-          <div className="mt-6 flex flex-col gap-2 text-xs text-white/40 sm:flex-row sm:items-center sm:justify-between">
+          <div className="mt-5 sm:mt-6 flex flex-col gap-1.5 text-xs text-white/40 sm:flex-row sm:items-center sm:justify-between">
             <p>© {new Date().getFullYear()} Void Layer. All rights reserved.</p>
             <p className="font-mono">Built with intent and a little glow.</p>
           </div>
         </div>
       </div>
     </footer>
-  );
-}
-
-function WordmarkBadge() {
-  return (
-    <div className="relative flex size-12 items-center justify-center rounded-[1.1rem] border border-white/12 bg-white/[0.04] shadow-[0_12px_30px_-18px_rgba(0,0,0,0.8)]">
-      <span className="absolute inset-0 rounded-[1.1rem] bg-[radial-gradient(circle_at_30%_28%,rgba(223,255,74,0.4),transparent_42%),radial-gradient(circle_at_70%_72%,rgba(185,150,255,0.25),transparent_38%)]" />
-      <span className="relative text-sm font-semibold tracking-tight text-white">V</span>
-    </div>
   );
 }
 

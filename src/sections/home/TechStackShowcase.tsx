@@ -78,7 +78,7 @@ export function TechStackShowcase() {
         >
           <motion.div
             variants={fadeUp}
-            className="relative mx-auto h-[36rem] overflow-hidden rounded-[2rem] border border-white/10 bg-[#0A0A0A] p-3 sm:h-[42rem] lg:h-[48rem]"
+            className="relative mx-auto h-[22rem] overflow-hidden rounded-[2rem] border border-white/10 bg-[#0A0A0A] p-3 sm:h-[36rem] lg:h-[48rem]"
           >
             <DomeGallery
               images={TECH_GALLERY_IMAGES}

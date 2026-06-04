@@ -36,10 +36,11 @@ export function RootLayout() {
         headerRightSlot={
           <Link
             to="/contact"
-            className="sm-cta group relative inline-flex items-center gap-1.5 rounded-full bg-white text-ink-950 px-4 py-2 text-[13.5px] font-semibold transition-transform hover:-translate-y-0.5"
+            className="sm-cta group relative inline-flex items-center gap-1.5 rounded-full bg-white text-ink-950 px-2.5 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-[13.5px] font-semibold transition-transform hover:-translate-y-0.5"
           >
-            Start a project
-            <ArrowUpRight className="size-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            <span className="hidden sm:inline">Start a project</span>
+            <span className="sm:hidden">Start</span>
+            <ArrowUpRight className="size-3.5 sm:size-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </Link>
         }
         showLabel={false}
@@ -57,7 +58,7 @@ export function RootLayout() {
         }
       />
 
-      <main className="relative pt-0 pb-28 lg:pb-0">
+      <main className="relative pt-0 pb-6 lg:pb-0">
         <PageTransition>
           <Outlet />
         </PageTransition>
@@ -69,17 +70,19 @@ export function RootLayout() {
         type="button"
         aria-label="Scroll to top"
         onClick={handleScrollTop}
-        className="fixed bottom-6 right-6 z-40 group"
+        className="fixed bottom-5 right-5 z-40 group hidden sm:block"
       >
         <div className="relative">
           <CircularText
             text="SCROLL*TO*TOP*"
             onHover="speedUp"
             spinDuration={18}
-            className="w-[160px] h-[160px] text-slate-200/90 drop-shadow-[0_10px_30px_rgba(0,0,0,0.35)]"
+            fontSize="text-[10px]"
+            radius={38}
+            className="w-[100px] h-[100px] text-slate-200/90 drop-shadow-[0_10px_30px_rgba(0,0,0,0.35)]"
           />
           <span className="pointer-events-none absolute inset-0 flex items-center justify-center">
-            <ArrowUp className="h-6 w-6 text-white" aria-hidden />
+            <ArrowUp className="h-5 w-5 text-white" aria-hidden />
           </span>
         </div>
       </button>
