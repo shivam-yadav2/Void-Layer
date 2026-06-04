@@ -32,9 +32,8 @@ export function DesktopNav() {
         >
           <Link to="/" className="flex items-center gap-2.5 group">
            
-            <span className="text-[15px] font-semibold tracking-tight">
-              Void<span className="text-white/60"> Layer</span>
-            </span>
+              <img src="/logo.png" alt="Void Layer Logo" className="h-6 w-6" />
+            
           </Link>
 
           <nav className="flex items-center gap-1">
