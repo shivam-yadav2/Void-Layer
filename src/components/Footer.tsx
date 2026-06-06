@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { FOOTER_NAV } from "@/data/nav";
+import logo from "@/assets/images/logo.png";
 
 export function Footer() {
   return (
@@ -15,9 +16,12 @@ export function Footer() {
 
           {/* Brand column */}
           <div className="sm:max-w-xs">
-            <p className="text-base font-semibold tracking-tight text-white">
-              Void Layer
-            </p>
+            <div className="flex items-center gap-2.5 mb-2">
+              <img src={logo} alt="Void Layer" className="h-20 w-auto" />
+              <p className="text-base font-semibold tracking-tight text-white">
+                Void Layer
+              </p>
+            </div>
             <p className="mt-0.5 text-sm text-white/45">
               Designing systems, products and motion.
             </p>

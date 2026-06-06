@@ -9,7 +9,7 @@ const marqueeItems = ["your work", "your brand", "your team", "your vision"];
 
 export function Hero() {
   return (
-    <section className="relative isolate overflow-hidden bg-black pt-16 lg:pt-24 pb-24 lg:pb-32">
+    <section className="relative  isolate overflow-hidden bg-black pt-16 lg:pt-24 pb-24 lg:pb-32"> 
       <Spotlight className="-top-40 left-0 md:-top-20 md:left-60" />
 
       <div

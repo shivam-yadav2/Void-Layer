@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { PRIMARY_NAV } from "@/data/nav";
 import { cn } from "@/utils/cn";
 import { ArrowUpRight } from "lucide-react";
+import logo from "@/assets/images/logo.png";
 
 export function DesktopNav() {
   const [scrolled, setScrolled] = useState(false);
@@ -31,10 +32,8 @@ export function DesktopNav() {
           )}
         >
           <Link to="/" className="flex items-center gap-2.5 group">
-           
-            <span className="text-[15px] font-semibold tracking-tight">
-              Void<span className="text-white/60"> Layer</span>
-            </span>
+            <img src={logo} alt="Void Layer" className="h-20 w-auto" />
+
           </Link>
 
           <nav className="flex items-center gap-1">

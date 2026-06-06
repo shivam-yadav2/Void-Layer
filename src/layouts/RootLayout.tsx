@@ -8,6 +8,7 @@ import { useLenis } from "@/hooks/useLenis";
 import CircularText from "@/components/ui/CircularText";
 import { ArrowUp, ArrowUpRight } from "lucide-react";
 import { PRIMARY_NAV } from "@/data/nav";
+import logo from "@/assets/images/logo.png";
 
 export function RootLayout() {
   useLenis();
@@ -50,10 +51,8 @@ export function RootLayout() {
         accentColor="#5227FF"
         logo={
           <Link to="/" className="flex items-center gap-2.5">
+            <img src={logo} alt="Void Layer" className="h-20 w-auto" />
           
-            <span className="text-[15px] font-semibold tracking-tight text-white">
-              Void<span className="text-white/60"> Layer</span>
-            </span>
           </Link>
         }
       />
