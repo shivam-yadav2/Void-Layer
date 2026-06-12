@@ -34,7 +34,7 @@ export function DesktopNav() {
           <Link to="/" className="flex items-center gap-2.5 group">
             <img src={logo} alt="Void Layer" className="h-20 w-auto" />
 
-          </Link>
+          </Link>?
 
           <nav className="flex items-center gap-1">
             {PRIMARY_NAV.map((item) => {

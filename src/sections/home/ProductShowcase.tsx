@@ -43,7 +43,7 @@ const PANELS: Panel[] = [
     productIndex: 0,
     number: "01",
     eyebrow: "Live product",
-    previewLabel: "Screenshot slot for the software page",
+    previewLabel: "Members, billing and check-in in one system.",
     tone: "lime",
     decor: "vault",
     featured: true,
@@ -53,7 +53,7 @@ const PANELS: Panel[] = [
     productIndex: 1,
     number: "02",
     eyebrow: "Operations app",
-    previewLabel: "Add the future web app image here",
+    previewLabel: "Sprints, tracking and dashboards, without the bloat.",
     tone: "purple",
     decor: "plotline",
     featured: true,
@@ -63,7 +63,7 @@ const PANELS: Panel[] = [
     productIndex: 2,
     number: "03",
     eyebrow: "HR system",
-    previewLabel: "Wide enough for a dashboard screenshot",
+    previewLabel: "HR, payroll and leave for growing teams.",
     tone: "orange",
     decor: "atrium",
   },
@@ -72,7 +72,7 @@ const PANELS: Panel[] = [
     productIndex: 3,
     number: "04",
     eyebrow: "Service software",
-    previewLabel: "Perfect for a product UI render",
+    previewLabel: "Booking, POS and loyalty for premium salons.",
     tone: "pink",
     decor: "salonix",
   },
@@ -81,7 +81,7 @@ const PANELS: Panel[] = [
     productIndex: 4,
     number: "05",
     eyebrow: "Commerce layer",
-    previewLabel: "Future software page goes in this frame",
+    previewLabel: "Stripe-native headless commerce.",
     tone: "cyan",
     decor: "storefront",
   },
@@ -90,7 +90,7 @@ const PANELS: Panel[] = [
     productIndex: 5,
     number: "06",
     eyebrow: "Marketplace stack",
-    previewLabel: "Long-form page preview with room to breathe",
+    previewLabel: "Every primitive a marketplace needs.",
     tone: "lime",
     decor: "bazaar",
     featured: true,
@@ -100,7 +100,7 @@ const PANELS: Panel[] = [
     productIndex: 0,
     number: "07",
     eyebrow: "More on the way",
-    previewLabel: "This tile can become a new product later",
+    previewLabel: "More products in the pipeline.",
     tone: "ink",
     decor: "vault",
   },
@@ -173,27 +173,20 @@ export function ProductShowcase() {
         >
           <motion.span variants={fadeUp} className="chip inline-flex">
             <Sparkles className="size-3.5 text-[#DFFF4A]" />
-            Product section
+            Products
           </motion.span>
           <motion.h2
             variants={fadeUp}
             className="mt-6 text-display-lg font-semibold tracking-tight text-balance text-white"
           >
-            A vibrant shelf for software pages, launches and future screenshots.
+            Software we build to launch and scale.
           </motion.h2>
           <motion.p variants={fadeUp} className="mt-5 text-lg text-white/55 text-pretty">
-            This block is ready for product imagery later. For now, it uses bold color,
-            3D SVG shapes and rich placeholder frames so the section still feels complete.
+            A focused set of platforms we design and ship end to end.
           </motion.p>
-
-          <motion.div variants={fadeUp} className="mt-7 flex flex-wrap justify-center gap-2">
-            <span className="chip bg-[#DFFF4A] text-black">Future screenshot slots</span>
-            <span className="chip">3D SVG ornaments</span>
-            <span className="chip">Bright launch cards</span>
-          </motion.div>
         </motion.div>
 
-        <ProductShowcaseGrid className="mt-14" />
+        <ProductShowcaseGrid className="mt-16" limit={6} />
       </div>
     </section>
   );
@@ -201,9 +194,11 @@ export function ProductShowcase() {
 
 interface ProductShowcaseGridProps {
   className?: string;
+  limit?: number;
 }
 
-export function ProductShowcaseGrid({ className }: ProductShowcaseGridProps) {
+export function ProductShowcaseGrid({ className, limit }: ProductShowcaseGridProps) {
+  const panels = limit ? PANELS.slice(0, limit) : PANELS;
   return (
     <motion.div
       initial="hidden"
@@ -212,13 +207,15 @@ export function ProductShowcaseGrid({ className }: ProductShowcaseGridProps) {
       variants={stagger(0.06)}
       className={cn("grid grid-cols-1 gap-5 lg:grid-cols-12 lg:gap-6", className)}
     >
-      {PANELS.map((panel) => {
+      {panels.map((panel, index) => {
         const product = PRODUCTS[panel.productIndex];
         const tone = TONE_CLASSES[panel.tone];
         const featured = panel.featured ?? false;
+        // When the grid is sliced, let the final tile fill its row instead of leaving a gap.
+        const span = limit && index === panels.length - 1 ? "lg:col-span-12" : panel.span;
 
         return (
-          <motion.div key={panel.number} variants={fadeUp} className={panel.span}>
+          <motion.div key={panel.number} variants={fadeUp} className={span}>
             <article
               className={cn(
                 "group relative flex h-full flex-col overflow-hidden rounded-[2rem] p-3 transition-transform duration-300 hover:-translate-y-1",
@@ -292,34 +289,16 @@ export function ProductShowcaseGrid({ className }: ProductShowcaseGridProps) {
                     <span className="size-2 rounded-full bg-white/20" />
                     <span className="size-2 rounded-full bg-white/20" />
                   </span>
-                  <span className="hidden truncate sm:inline">voidlayer.com/products</span>
-                  <span className="ml-auto rounded-full border border-white/10 bg-white/[0.04] px-2 py-1 text-[9px] tracking-[0.24em] text-white/55">
-                    screenshot slot
-                  </span>
+                  <span className="hidden truncate sm:inline">voidlayer.com/{product.slug}</span>
                 </div>
 
                 <div className="relative z-10 min-h-[15rem] overflow-hidden pt-4 sm:min-h-[17rem]">
                   <ProductArt decor={panel.decor} />
 
-                  <div className="absolute left-4 top-4 max-w-[58%] rounded-2xl border border-white/10 bg-black/35 px-3 py-2 backdrop-blur-md sm:px-4">
-                    <p className="text-[10px] uppercase tracking-[0.28em] text-white/45">
-                      Placeholder for software image
-                    </p>
-                    <p className="mt-1 text-sm text-white/80">
-                      Drop the product page capture here later.
-                    </p>
-                  </div>
-
                   <div className="absolute bottom-4 left-4 right-4 flex flex-wrap items-end justify-between gap-2">
                     <p className="max-w-xs text-xs text-white/55 text-pretty">
                       {panel.previewLabel}
                     </p>
-                    <div className="hidden sm:flex items-center gap-2 rounded-full border border-white/10 bg-black/35 px-3 py-1.5 backdrop-blur-md">
-                      <span className="size-2 rounded-full bg-[#DFFF4A]" />
-                      <span className="text-[10px] font-medium uppercase tracking-[0.24em] text-white/70">
-                        Ready for art direction
-                      </span>
-                    </div>
                   </div>
                 </div>
               </div>
