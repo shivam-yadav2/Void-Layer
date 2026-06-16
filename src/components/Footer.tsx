@@ -58,7 +58,7 @@ export function Footer() {
         {/* Bottom strip */}
         <div className="relative mt-10 sm:mt-14 border-t border-white/[0.06] pt-6 sm:pt-8">
           <div className="overflow-hidden">
-            <h2 className="font-display text-[clamp(2rem,10vw,11rem)] font-semibold leading-none tracking-[-0.08em] text-white">
+            <h2 className="font-display text-[clamp(2rem,25vw,20rem)] font-semibold leading-none tracking-[-0.08em] text-white">
               VoidLayer
             </h2>
             <p className="mt-1 font-mono text-xs uppercase tracking-[0.35em] text-white/35">

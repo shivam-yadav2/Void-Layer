@@ -68,7 +68,7 @@ export function ServicesShowcase() {
           </motion.div>
         </motion.div>
 
-        <motion.div
+        {/* <motion.div
           variants={stagger(0.06)}
           initial="hidden"
           whileInView="visible"
@@ -97,7 +97,7 @@ export function ServicesShowcase() {
           <motion.div variants={fadeUp} className="lg:col-span-8">
             <MiniServiceCard service={SERVICES[7]} tone="paper" compact={false} wide />
           </motion.div>
-        </motion.div>
+        </motion.div> */}
 
         <p className="mt-7 text-center text-sm text-white/40">
           + and much more +

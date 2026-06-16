@@ -12,18 +12,22 @@ import { Testimonials } from "@/sections/home/Testimonials";
 import { FAQ } from "@/sections/home/FAQ";
 import { CTAFooter } from "@/sections/home/CTAFooter";
 import { ProductShowcase } from "@/sections/home/ProductShowcase";
+import { HomeProductCards } from "@/sections/home/HomeProductCards";
 import { ResponsiveShowcase } from "@/sections/home/ResponsiveShowcase";
 import { ServicesShowcase } from "@/sections/home/ServicesShowcase";
+import { ServicesList } from "@/sections/home/ServicesList";
 
 export function HomePage() {
   return (
     <>
       <SEO path="/" />
       <Hero />
-      <ProductShowcase />
       <VelocityText />
+      {/* <ProductShowcase /> */}
+      <HomeProductCards />
       {/* <ResponsiveShowcase /> */}
       <ServicesShowcase />
+      {/* <ServicesList /> */}
       {/* <HorizontalShowc÷ase /> */}
       {/* <Statement /> */}
       {/* <FeaturedProducts /> */}
